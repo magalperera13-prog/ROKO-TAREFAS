@@ -59,7 +59,7 @@ export function LoginForm() {
         <div className="mb-8 text-center">
           <div
             className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl border text-lg font-semibold"
-            style={{ borderColor: "var(--color-border)", background: "var(--color-bg-elevated)", color: "var(--color-accent)" }}
+            style={{ borderColor: "var(--color-border)", background: "var(--color-bg-elevated)", color: "var(--color-brand)" }}
           >
             ✓
           </div>
@@ -157,7 +157,7 @@ export function LoginForm() {
             </p>
           )}
           {info && (
-            <p className="mt-4 rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-accent-soft)", color: "var(--color-accent)" }}>
+            <p className="mt-4 rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-brand-soft)", color: "var(--color-brand)" }}>
               {info}
             </p>
           )}
@@ -166,7 +166,7 @@ export function LoginForm() {
             type="submit"
             disabled={loading}
             className="mt-5 w-full rounded-lg py-2.5 text-sm font-semibold transition disabled:opacity-60"
-            style={{ background: "var(--color-accent)", color: "#062017" }}
+            style={{ background: "var(--color-brand)", color: "#fff8f3" }}
           >
             {loading ? "Aguarde…" : view === "signin" ? "Entrar" : "Enviar link de recuperação"}
           </button>

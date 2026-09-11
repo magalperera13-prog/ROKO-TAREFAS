@@ -94,6 +94,27 @@ comment on table public.subscription_payments is 'Histórico mensal de pagamento
 comment on column public.subscription_payments.month_key is 'Mês (YYYY-MM) a que o pagamento se refere.';
 comment on column public.subscription_payments.paid_date is 'Data real em que o pagamento foi efetuado — usada para estimar o próximo vencimento.';
 
+-- ----------------------------------------------------------------------------
+-- Tabela de senhas — e-mail/login e senha de assinaturas e sites.
+-- A senha NUNCA é gravada em texto puro aqui: o campo password_encrypted
+-- guarda o resultado já criptografado pelo servidor (Server Actions do
+-- Next.js, usando CREDENTIALS_ENCRYPTION_KEY). O Supabase nunca vê a senha
+-- em texto puro, só o valor criptografado.
+-- ----------------------------------------------------------------------------
+create table if not exists public.credentials (
+  id                 uuid primary key default gen_random_uuid(),
+  user_id            uuid not null references auth.users (id) on delete cascade,
+  service_name       text not null check (char_length(trim(service_name)) > 0),
+  login_identifier   text,
+  password_encrypted text not null,
+  notes              text,
+  created_at         timestamptz not null default now(),
+  updated_at         timestamptz not null default now()
+);
+
+comment on table public.credentials is 'Credenciais (e-mail/login + senha) de assinaturas e sites — senha sempre criptografada pelo servidor antes de chegar aqui.';
+comment on column public.credentials.password_encrypted is 'Senha criptografada (AES-256-GCM) pelo servidor — nunca texto puro.';
+
 -- Garante a coluna em bancos que ainda não a tinham (versões bem antigas do schema).
 alter table public.subscriptions add column if not exists renewal_type text not null default 'fixed_day';
 
@@ -143,6 +164,8 @@ create index if not exists subscription_payments_subscription_idx on public.subs
 create unique index if not exists subscription_payments_unique_month
   on public.subscription_payments (subscription_id, month_key);
 
+create index if not exists credentials_user_idx on public.credentials (user_id);
+
 -- ----------------------------------------------------------------------------
 -- updated_at automático
 -- ----------------------------------------------------------------------------
@@ -177,6 +200,12 @@ create trigger subscriptions_set_updated_at
 drop trigger if exists subscription_payments_set_updated_at on public.subscription_payments;
 create trigger subscription_payments_set_updated_at
   before update on public.subscription_payments
+  for each row
+  execute function public.set_updated_at();
+
+drop trigger if exists credentials_set_updated_at on public.credentials;
+create trigger credentials_set_updated_at
+  before update on public.credentials
   for each row
   execute function public.set_updated_at();
 
@@ -273,6 +302,29 @@ create policy "subscription_payments_update_own"
 drop policy if exists "subscription_payments_delete_own" on public.subscription_payments;
 create policy "subscription_payments_delete_own"
   on public.subscription_payments for delete
+  using (auth.uid() = user_id);
+
+alter table public.credentials enable row level security;
+
+drop policy if exists "credentials_select_own" on public.credentials;
+create policy "credentials_select_own"
+  on public.credentials for select
+  using (auth.uid() = user_id);
+
+drop policy if exists "credentials_insert_own" on public.credentials;
+create policy "credentials_insert_own"
+  on public.credentials for insert
+  with check (auth.uid() = user_id);
+
+drop policy if exists "credentials_update_own" on public.credentials;
+create policy "credentials_update_own"
+  on public.credentials for update
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
+drop policy if exists "credentials_delete_own" on public.credentials;
+create policy "credentials_delete_own"
+  on public.credentials for delete
   using (auth.uid() = user_id);
 
 -- ============================================================================

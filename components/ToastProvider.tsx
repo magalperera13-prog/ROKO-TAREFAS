@@ -42,9 +42,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             role="status"
             className="animate-in fade-in slide-in-from-bottom-2 flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium shadow-lg backdrop-blur"
             style={{
-              background: t.tone === "success" ? "var(--color-accent-soft)" : "var(--color-danger-soft)",
-              borderColor: t.tone === "success" ? "var(--color-accent)" : "var(--color-danger)",
-              color: t.tone === "success" ? "var(--color-accent)" : "var(--color-danger)",
+              background: t.tone === "success" ? "var(--color-brand-soft)" : "var(--color-danger-soft)",
+              borderColor: t.tone === "success" ? "var(--color-brand)" : "var(--color-danger)",
+              color: t.tone === "success" ? "var(--color-brand)" : "var(--color-danger)",
             }}
           >
             {t.message}

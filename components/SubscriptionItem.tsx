@@ -98,7 +98,7 @@ export function SubscriptionItem({
     return (
       <div
         className="rounded-xl border px-3.5 py-3"
-        style={{ borderColor: "var(--color-accent)", background: "var(--color-bg-elevated)" }}
+        style={{ borderColor: "var(--color-brand)", background: "var(--color-bg-elevated)" }}
       >
         <div className="flex flex-wrap items-center gap-2">
           <input
@@ -136,9 +136,9 @@ export function SubscriptionItem({
             onClick={() => setDraftRenewalType("fixed_day")}
             className="rounded-full px-2.5 py-1 text-[11px] font-medium transition"
             style={{
-              background: draftRenewalType === "fixed_day" ? "var(--color-accent-soft)" : "transparent",
-              color: draftRenewalType === "fixed_day" ? "var(--color-accent)" : "var(--color-text-muted)",
-              border: `1px solid ${draftRenewalType === "fixed_day" ? "var(--color-accent)" : "var(--color-border)"}`,
+              background: draftRenewalType === "fixed_day" ? "var(--color-brand-soft)" : "transparent",
+              color: draftRenewalType === "fixed_day" ? "var(--color-brand)" : "var(--color-text-muted)",
+              border: `1px solid ${draftRenewalType === "fixed_day" ? "var(--color-brand)" : "var(--color-border)"}`,
             }}
           >
             Dia fixo
@@ -147,9 +147,9 @@ export function SubscriptionItem({
             onClick={() => setDraftRenewalType("payment_date")}
             className="rounded-full px-2.5 py-1 text-[11px] font-medium transition"
             style={{
-              background: draftRenewalType === "payment_date" ? "var(--color-accent-soft)" : "transparent",
-              color: draftRenewalType === "payment_date" ? "var(--color-accent)" : "var(--color-text-muted)",
-              border: `1px solid ${draftRenewalType === "payment_date" ? "var(--color-accent)" : "var(--color-border)"}`,
+              background: draftRenewalType === "payment_date" ? "var(--color-brand-soft)" : "transparent",
+              color: draftRenewalType === "payment_date" ? "var(--color-brand)" : "var(--color-text-muted)",
+              border: `1px solid ${draftRenewalType === "payment_date" ? "var(--color-brand)" : "var(--color-border)"}`,
             }}
           >
             Baseado no pagamento
@@ -231,7 +231,7 @@ export function SubscriptionItem({
           <button
             onClick={commitEdit}
             className="rounded-lg px-2.5 py-1 text-xs font-semibold transition hover:opacity-90"
-            style={{ background: "var(--color-accent)", color: "#062017" }}
+            style={{ background: "var(--color-brand)", color: "#fff8f3" }}
           >
             Salvar
           </button>

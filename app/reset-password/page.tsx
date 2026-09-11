@@ -55,7 +55,7 @@ export default function ResetPasswordPage() {
         <div className="mb-8 text-center">
           <div
             className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl border text-lg font-semibold"
-            style={{ borderColor: "var(--color-border)", background: "var(--color-bg-elevated)", color: "var(--color-accent)" }}
+            style={{ borderColor: "var(--color-border)", background: "var(--color-bg-elevated)", color: "var(--color-brand)" }}
           >
             ✓
           </div>
@@ -80,7 +80,7 @@ export default function ResetPasswordPage() {
               <a
                 href="/login"
                 className="mt-4 inline-block text-sm font-medium transition hover:opacity-80"
-                style={{ color: "var(--color-accent)" }}
+                style={{ color: "var(--color-brand)" }}
               >
                 Voltar para o login
               </a>
@@ -134,7 +134,7 @@ export default function ResetPasswordPage() {
                 type="submit"
                 disabled={submitting}
                 className="w-full rounded-lg py-2.5 text-sm font-semibold transition disabled:opacity-60"
-                style={{ background: "var(--color-accent)", color: "#062017" }}
+                style={{ background: "var(--color-brand)", color: "#fff8f3" }}
               >
                 {submitting ? "Salvando…" : "Salvar nova senha"}
               </button>

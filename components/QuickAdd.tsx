@@ -37,7 +37,7 @@ export function QuickAdd({ onAdd }: { onAdd: (title: string) => Promise<void> | 
         onClick={submit}
         disabled={!value.trim() || submitting}
         className="shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-40"
-        style={{ background: "var(--color-accent)", color: "#062017" }}
+        style={{ background: "var(--color-brand)", color: "#fff8f3" }}
       >
         Adicionar
       </button>

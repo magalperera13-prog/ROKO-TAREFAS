@@ -5,25 +5,31 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
 
-  --color-bg: #0e1117;
-  --color-bg-elevated: #161b25;
-  --color-bg-inset: #0b0e13;
-  --color-border: #262d3a;
-  --color-border-soft: #1c222d;
-  --color-text: #eef1f7;
-  --color-text-muted: #8b93a5;
-  --color-text-faint: #5b6375;
+  --color-bg: #f8f7f4;
+  --color-bg-elevated: #ffffff;
+  --color-bg-inset: #f1efe9;
+  --color-border: #e4e1d9;
+  --color-border-soft: #ecebe5;
+  --color-text: #211d17;
+  --color-text-muted: #6b665c;
+  --color-text-faint: #a19c8f;
 
-  --color-accent: #3ecf8e;
-  --color-accent-soft: #17301f;
-  --color-pending: #e8a53d;
-  --color-pending-soft: #2c2415;
-  --color-danger: #e2665f;
-  --color-danger-soft: #2c1a1a;
+  /* Cor de marca — botões, abas ativas, links, foco. */
+  --color-brand: #ea580c;
+  --color-brand-soft: #fef0e6;
+
+  /* Reservado para VALORES (dinheiro, contadores) e estados de conclusão —
+     nunca usado em botões ou elementos de navegação. */
+  --color-accent: #16a34a;
+  --color-accent-soft: #e7f6ec;
+  --color-pending: #d97706;
+  --color-pending-soft: #fdf1e0;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fce9e8;
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -38,8 +44,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-accent);
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -54,3 +60,4 @@ body {
 .tabular {
   font-variant-numeric: tabular-nums;
 }
+

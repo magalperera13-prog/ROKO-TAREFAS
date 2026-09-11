@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { TodayIcon, HistoryIcon, ExpensesIcon, SubscriptionsIcon, LogoutIcon } from "@/components/icons";
+import { TodayIcon, HistoryIcon, ExpensesIcon, SubscriptionsIcon, CredentialsIcon, LogoutIcon } from "@/components/icons";
 
 const NAV_ITEMS = [
   { href: "/", label: "Hoje", Icon: TodayIcon },
   { href: "/history", label: "Histórico", Icon: HistoryIcon },
   { href: "/expenses", label: "Gastos", Icon: ExpensesIcon },
   { href: "/subscriptions", label: "Assinaturas", Icon: SubscriptionsIcon },
+  { href: "/credentials", label: "Senhas", Icon: CredentialsIcon },
 ];
 
 export function AppShell({ userEmail, children }: { userEmail?: string | null; children: React.ReactNode }) {
@@ -32,7 +33,7 @@ export function AppShell({ userEmail, children }: { userEmail?: string | null; c
         <div className="mb-8 flex items-center gap-2.5 px-2">
           <div
             className="flex h-8 w-8 items-center justify-center rounded-lg border text-sm font-semibold"
-            style={{ borderColor: "var(--color-border)", background: "var(--color-bg-inset)", color: "var(--color-accent)" }}
+            style={{ borderColor: "var(--color-border)", background: "var(--color-bg-inset)", color: "var(--color-brand)" }}
           >
             ✓
           </div>
@@ -48,8 +49,8 @@ export function AppShell({ userEmail, children }: { userEmail?: string | null; c
                 href={href}
                 className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition"
                 style={{
-                  background: active ? "var(--color-accent-soft)" : "transparent",
-                  color: active ? "var(--color-accent)" : "var(--color-text-muted)",
+                  background: active ? "var(--color-brand-soft)" : "transparent",
+                  color: active ? "var(--color-brand)" : "var(--color-text-muted)",
                 }}
               >
                 <Icon className="h-[18px] w-[18px] shrink-0" />
@@ -78,7 +79,7 @@ export function AppShell({ userEmail, children }: { userEmail?: string | null; c
           <div className="flex items-center gap-2.5">
             <div
               className="flex h-7 w-7 items-center justify-center rounded-lg border text-xs font-semibold"
-              style={{ borderColor: "var(--color-border)", background: "var(--color-bg-inset)", color: "var(--color-accent)" }}
+              style={{ borderColor: "var(--color-border)", background: "var(--color-bg-inset)", color: "var(--color-brand)" }}
             >
               ✓
             </div>
@@ -114,7 +115,7 @@ export function AppShell({ userEmail, children }: { userEmail?: string | null; c
                 key={href}
                 href={href}
                 className="flex flex-1 flex-col items-center gap-0.5 rounded-lg py-1 text-[10px] font-medium transition"
-                style={{ color: active ? "var(--color-accent)" : "var(--color-text-muted)" }}
+                style={{ color: active ? "var(--color-brand)" : "var(--color-text-muted)" }}
               >
                 <Icon className="h-5 w-5" />
                 {label}

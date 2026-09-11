@@ -65,7 +65,7 @@ export function TaskItem({
     return (
       <div
         className="rounded-xl border px-3.5 py-3"
-        style={{ borderColor: "var(--color-accent)", background: "var(--color-bg-elevated)" }}
+        style={{ borderColor: "var(--color-brand)", background: "var(--color-bg-elevated)" }}
       >
         <input
           ref={titleRef}
@@ -102,7 +102,7 @@ export function TaskItem({
           <button
             onClick={commitEdit}
             className="rounded-lg px-2.5 py-1 text-xs font-semibold transition hover:opacity-90"
-            style={{ background: "var(--color-accent)", color: "#062017" }}
+            style={{ background: "var(--color-brand)", color: "#fff8f3" }}
           >
             Salvar
           </button>
